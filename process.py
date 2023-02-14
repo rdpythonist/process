@@ -4,12 +4,13 @@ import subprocess,sys,json
 # out,err=p.communicate()
 import time
 from datetime import datetime
-for i in range(10):
-    p=subprocess.Popen(["powershell.exe","D:\\process\\hello.ps1"],stdout=subprocess.PIPE,text=True)
+original_time=time.time()
+while time.time()<original_time+60:
+    p=subprocess.Popen(["powershell.exe","C:\\Users\\user\\Pictures\\local\\hello.ps1"],stdout=subprocess.PIPE,text=True)
     out,err=p.communicate()
     current_datetime=str(datetime.now()).replace(':','')
     file_name=str(current_datetime)[:20]+'.txt'
     file=open(file_name,'w')
     file.write(str(out))
     file.close()
-    time.sleep(3)
+    time.sleep(1.5)
